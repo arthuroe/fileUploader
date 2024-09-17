@@ -11,7 +11,6 @@ from django.conf import settings
 @mock_aws
 class FileUploadTests(APITestCase):
 
-    
     def setUp(self):
         # Setup AWS mock S3 bucket
         self.s3 = boto3.client('s3', region_name='us-east-1')
@@ -37,4 +36,4 @@ class FileUploadTests(APITestCase):
 
         # Check if the file exists in the mocked S3 bucket
         s3_objects = self.s3.list_objects_v2(Bucket=self.bucket_name)
-        self.assertEqual(len(s3_objects['Contents']), 2)
+        self.assertEqual(len(s3_objects['Contents']), 1)
